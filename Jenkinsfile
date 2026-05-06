@@ -3,15 +3,21 @@ pipeline {
 
     stages {
 
-        stage('Build Docker Containers') {
+        stage('Build Backend Image') {
             steps {
-                sh 'docker-compose up --build -d'
+                sh 'docker build -t hostel-backend ./backend'
             }
         }
 
-        stage('Check Running Containers') {
+        stage('Build Frontend Image') {
             steps {
-                sh 'docker ps'
+                sh 'docker build -t hostel-frontend ./hostel-complaints'
+            }
+        }
+
+        stage('Check Docker Images') {
+            steps {
+                sh 'docker images'
             }
         }
     }
