@@ -5,7 +5,7 @@ pipeline {
 
         stage('Build Docker Containers') {
             steps {
-                sh 'docker compose up --build -d'
+                sh 'docker-compose up --build -d'
             }
         }
 
